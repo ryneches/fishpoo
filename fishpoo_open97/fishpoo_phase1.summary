@@ -1,0 +1,49 @@
+Num samples: 34
+Num observations: 5500
+Total count: 4631010
+Table density (fraction of non-zero values): 0.094
+
+Counts/sample summary:
+ Min: 167.0
+ Max: 288862.0
+ Median: 128219.500
+ Mean: 136206.176
+ Std. dev.: 80557.109
+ Sample Metadata Categories: phinchID; Description; BarcodeSequence; Diet; Host; LinkerPrimerSequence; ReverseBarcode; Experiment; Dilution; ReversePrimerSequence; Temperature
+ Observation Metadata Categories: taxonomy
+
+Counts/sample detail:
+ Neg.Control.1: 167.0
+ WATERCNT: 10204.0
+ KITCNT1: 14189.0
+ CHARCNT: 20986.0
+ TRIGOTO6: 44960.0
+ PLECSTA1: 48918.0
+ HAPLMIC3: 55539.0
+ HAPLMIC2: 71457.0
+ FOOD: 76001.0
+ PERIMIC1: 92527.0
+ TRIGOTO3: 94293.0
+ HAPLMIC1: 100063.0
+ CYPRCOL1: 105018.0
+ NEOLBUS1: 106382.0
+ TREMBEN1: 106666.0
+ HAPLMIC4: 115193.0
+ LOBOLAB1: 121653.0
+ CYPRCOL2: 134786.0
+ REGACAL1: 139993.0
+ HAPLMIC5: 145213.0
+ TRIGOTO4: 145975.0
+ XENOFLA1: 152478.0
+ HAPLMIC6: 161499.0
+ TRIGOTO5: 176298.0
+ LEPIPRO1: 178370.0
+ CHALBRI1: 200299.0
+ TRIGOTO2: 211851.0
+ TRIGOTO1: 238470.0
+ CYPRCOL6: 241176.0
+ CYPRCOL5: 241227.0
+ TROPMOO1: 244061.0
+ CYPRCOL3: 262606.0
+ CYPRCOL4: 283630.0
+ TANGIRA1: 288862.0

@@ -1,0 +1,39 @@
+Num samples: 24
+Num observations: 2572
+Total count: 1738899
+Table density (fraction of non-zero values): 0.127
+
+Counts/sample summary:
+ Min: 899.0
+ Max: 170191.0
+ Median: 54648.500
+ Mean: 72454.125
+ Std. dev.: 52339.857
+ Sample Metadata Categories: phinchID; Description; BarcodeSequence; Diet; Host; LinkerPrimerSequence; ReverseBarcode; Experiment; Dilution; ReversePrimerSequence; Temperature
+ Observation Metadata Categories: taxonomy
+
+Counts/sample detail:
+ 0.55: 899.0
+ 0.5: 7024.0
+ x3125.55: 11348.0
+ x15625.55: 14116.0
+ 0.45: 20438.0
+ x3125.50: 32019.0
+ x625.55: 35110.0
+ x15625.50: 40847.0
+ x125.55: 42270.0
+ x3125.45: 47399.0
+ x15625.45: 49183.0
+ x625.50: 50225.0
+ x625.45: 59072.0
+ x5.50: 71062.0
+ x25.55: 77336.0
+ x25.50: 80696.0
+ 1.55: 95625.0
+ x125.50: 102569.0
+ x5.55: 115756.0
+ x5.45: 144544.0
+ 1.5: 150094.0
+ x25.45: 157972.0
+ x125.45: 163104.0
+ 1.45: 170191.0

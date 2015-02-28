@@ -1,0 +1,167 @@
+Logging started at 18:37:18 on 27 Feb 2015
+QIIME version: 1.9.0
+
+qiime_config values:
+pick_otus_reference_seqs_fp	/home/russell/qiime/local/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/rep_set/97_otus.fasta
+sc_queue	all.q
+pynast_template_alignment_fp	/home/russell/qiime/local/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/rep_set_aligned/85_otus.fasta
+cluster_jobs_fp	start_parallel_jobs.py
+assign_taxonomy_reference_seqs_fp	/home/russell/qiime/local/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/rep_set/97_otus.fasta
+torque_queue	friendlyq
+jobs_to_start	1
+denoiser_min_per_core	50
+assign_taxonomy_id_to_taxonomy_fp	/home/russell/qiime/local/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/taxonomy/97_otu_taxonomy.txt
+temp_dir	/tmp/
+blastall_fp	blastall
+seconds_to_sleep	1
+
+parameter file values:
+parallel:jobs_to_start	16
+
+Input file md5 sums:
+fishpoo.fasta: 1bd149e372d967e51be83eeb0460e71a
+/home/russell/gg_13_8_otus/rep_set/97_otus.fasta: 50b2269712b3738afb41892bed936c29
+
+Executing commands.
+
+# Pick Reference OTUs command 
+parallel_pick_otus_uclust_ref.py -i fishpoo.fasta -o fishpoo_open97/step1_otus -r /home/russell/gg_13_8_otus/rep_set/97_otus.fasta -T --jobs_to_start 16 
+
+Stdout:
+
+Stderr:
+
+# Generate full failures fasta file command 
+filter_fasta.py -f fishpoo.fasta -s fishpoo_open97/step1_otus/fishpoo_failures.txt -o fishpoo_open97/step1_otus/failures.fasta
+
+Stdout:
+
+Stderr:
+
+Executing commands.
+
+# Pick rep set command 
+pick_rep_set.py -i fishpoo_open97/step1_otus/fishpoo_otus.txt -o fishpoo_open97/step1_otus/step1_rep_set.fna -f fishpoo.fasta
+
+Stdout:
+
+Stderr:
+
+# Subsample the failures fasta file using API 
+python -c "import qiime; qiime.util.subsample_fasta('/home/russell/fishpoo/fishpoo_open97/step1_otus/failures.fasta', '/home/russell/fishpoo/fishpoo_open97/step2_otus/subsampled_failures.fasta', '0.001000')
+
+"Executing commands.
+
+# Pick de novo OTUs for new clusters command 
+pick_otus.py -i fishpoo_open97/step2_otus//subsampled_failures.fasta -o fishpoo_open97/step2_otus/ -m uclust  --denovo_otu_id_prefix New.ReferenceOTU
+
+Stdout:
+
+Stderr:
+
+# Pick representative set for subsampled failures command 
+pick_rep_set.py -i fishpoo_open97/step2_otus//subsampled_failures_otus.txt -o fishpoo_open97/step2_otus//step2_rep_set.fna -f fishpoo_open97/step2_otus//subsampled_failures.fasta
+
+Stdout:
+
+Stderr:
+
+# Pick reference OTUs using de novo rep set command 
+parallel_pick_otus_uclust_ref.py -i fishpoo_open97/step1_otus/failures.fasta -o fishpoo_open97/step3_otus/ -r fishpoo_open97/step2_otus//step2_rep_set.fna -T --jobs_to_start 16 
+
+Stdout:
+
+Stderr:
+
+# Create fasta file of step3 failures command 
+filter_fasta.py -f fishpoo_open97/step1_otus/failures.fasta -s fishpoo_open97/step3_otus//failures_failures.txt -o fishpoo_open97/step3_otus//failures_failures.fasta
+
+Stdout:
+
+Stderr:
+
+# Pick de novo OTUs on step3 failures command 
+pick_otus.py -i fishpoo_open97/step3_otus//failures_failures.fasta -o fishpoo_open97/step4_otus/ -m uclust  --denovo_otu_id_prefix New.CleanUp.ReferenceOTU
+
+Stdout:
+
+Stderr:
+
+# Merge OTU maps command 
+cat fishpoo_open97/step1_otus/fishpoo_otus.txt fishpoo_open97/step3_otus//failures_otus.txt fishpoo_open97/step4_otus//failures_failures_otus.txt > fishpoo_open97/final_otu_map.txt
+
+Stdout:
+
+Stderr:
+
+# Pick representative set for subsampled failures command 
+pick_rep_set.py -i fishpoo_open97/step4_otus//failures_failures_otus.txt -o fishpoo_open97/step4_otus//step4_rep_set.fna -f fishpoo_open97/step3_otus//failures_failures.fasta
+
+Stdout:
+
+Stderr:
+
+# Filter singletons from the otu map using API 
+python -c "import qiime; qiime.filter.filter_otus_from_otu_map('/home/russell/fishpoo/fishpoo_open97/final_otu_map.txt', '/home/russell/fishpoo/fishpoo_open97/final_otu_map_mc2.txt', '2')"
+
+# Write non-singleton otus representative sequences from step1 to the final rep set file: fishpoo_open97/rep_set.fna
+
+# Copy the full input refseqs file to the new refseq file
+cp /home/russell/gg_13_8_otus/rep_set/97_otus.fasta fishpoo_open97/new_refseqs.fna
+
+# Write non-singleton otus representative sequences from step 2 and step 4 to the final representative set and the new reference set (fishpoo_open97/rep_set.fna and fishpoo_open97/new_refseqs.fna respectively)
+
+Executing commands.
+
+# Make the otu table command 
+make_otu_table.py -i fishpoo_open97/final_otu_map_mc2.txt -o fishpoo_open97/otu_table_mc2.biom
+
+Stdout:
+
+Stderr:
+
+Executing commands.
+
+# Assign taxonomy command 
+parallel_assign_taxonomy_uclust.py -i fishpoo_open97/rep_set.fna -o fishpoo_open97/uclust_assigned_taxonomy -T --jobs_to_start 16 
+
+Stdout:
+
+Stderr:
+
+Executing commands.
+
+# Add taxa to OTU table command 
+biom add-metadata -i fishpoo_open97/otu_table_mc2.biom --observation-metadata-fp fishpoo_open97/uclust_assigned_taxonomy/rep_set_tax_assignments.txt -o fishpoo_open97/otu_table_mc2_w_tax.biom --sc-separated taxonomy --observation-header OTUID,taxonomy
+
+Stdout:
+
+Stderr:
+
+Executing commands.
+
+# Align sequences command 
+parallel_align_seqs_pynast.py -i fishpoo_open97/rep_set.fna -o fishpoo_open97/pynast_aligned_seqs -T --jobs_to_start 16 
+
+Stdout:
+
+Stderr:
+
+# Filter alignment command 
+filter_alignment.py -o fishpoo_open97/pynast_aligned_seqs -i fishpoo_open97/pynast_aligned_seqs/rep_set_aligned.fasta 
+
+Stdout:
+
+Stderr:
+
+# Build phylogenetic tree command 
+make_phylogeny.py -i fishpoo_open97/pynast_aligned_seqs/rep_set_aligned_pfiltered.fasta -o fishpoo_open97/rep_set.tre 
+
+Stdout:
+
+Stderr:
+
+Executing commands.
+
+
+Logging stopped at 18:54:12 on 27 Feb 2015

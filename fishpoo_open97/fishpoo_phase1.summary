@@ -9,7 +9,7 @@ Counts/sample summary:
  Median: 128219.500
  Mean: 136206.176
  Std. dev.: 80557.109
- Sample Metadata Categories: phinchID; Description; BarcodeSequence; Diet; Host; LinkerPrimerSequence; ReverseBarcode; Experiment; Dilution; ReversePrimerSequence; Temperature
+ Sample Metadata Categories: Tribe; phinchID; Description; Diet2; Diet1; BarcodeSequence; Host; LinkerPrimerSequence; ReverseBarcode; Diet_fishbase; Experiment; Dilution; ReversePrimerSequence; Temperature
  Observation Metadata Categories: taxonomy
 
 Counts/sample detail:

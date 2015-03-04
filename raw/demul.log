@@ -1,0 +1,92 @@
+Indices are switched
+Creating ../demul
+Creating ../demul/interleaved_fastq
+Creating ../demul/raw_fastq
+Creating ../demul/qiime_ready
+Creating ../demul/trimmed_fastq
+Reading barcodes and sample mapping
+Found 76 samples. Read 76 non-empty lines in the mapping file
+Total number of barcodes : 82764 using 1 maximum mismatch per barcode
+Processing ./FISH_103_NoIndex_L001_R1_001.fastq.gz
+Processing ./FISH_103_NoIndex_L001_R1_002.fastq.gz
+Processing ./FISH_103_NoIndex_L001_R1_003.fastq.gz
+Processing ./FISH_103_NoIndex_L001_R1_004.fastq.gz
+Processing ./FISH_103_NoIndex_L001_R1_005.fastq.gz
+Processing ./FISH_103_NoIndex_L001_R1_006.fastq.gz
+Processing ./FISH_103_NoIndex_L001_R1_007.fastq.gz
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x125.55_1P" "../demul/trimmed_fastq/fishpoo_x125.55_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x125.55" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_CYPRCOL2.2_1P" "../demul/trimmed_fastq/fishpoo_CYPRCOL2.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.CYPRCOL2.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x625.45_1P" "../demul/trimmed_fastq/fishpoo_x625.45_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x625.45" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TRIGOTO2.2_1P" "../demul/trimmed_fastq/fishpoo_TRIGOTO2.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TRIGOTO2.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_HAPMIC4.2_1P" "../demul/trimmed_fastq/fishpoo_HAPMIC4.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.HAPMIC4.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_REGACAL1_1P" "../demul/trimmed_fastq/fishpoo_REGACAL1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.REGACAL1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TRIGOTO3.2_1P" "../demul/trimmed_fastq/fishpoo_TRIGOTO3.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TRIGOTO3.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_HAPLMIC5_1P" "../demul/trimmed_fastq/fishpoo_HAPLMIC5_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.HAPLMIC5" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TANGIRA1_1P" "../demul/trimmed_fastq/fishpoo_TANGIRA1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TANGIRA1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x5.45_1P" "../demul/trimmed_fastq/fishpoo_x5.45_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x5.45" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_NEOLBUS.2_1P" "../demul/trimmed_fastq/fishpoo_NEOLBUS.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.NEOLBUS.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_XENOFLA1_1P" "../demul/trimmed_fastq/fishpoo_XENOFLA1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.XENOFLA1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x15625.50_1P" "../demul/trimmed_fastq/fishpoo_x15625.50_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x15625.50" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_CYPRCOL6_1P" "../demul/trimmed_fastq/fishpoo_CYPRCOL6_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.CYPRCOL6" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TRIGOTO1.2_1P" "../demul/trimmed_fastq/fishpoo_TRIGOTO1.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TRIGOTO1.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x3125.55_1P" "../demul/trimmed_fastq/fishpoo_x3125.55_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x3125.55" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TRIGOTO4_1P" "../demul/trimmed_fastq/fishpoo_TRIGOTO4_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TRIGOTO4" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_Neg.Control.2_1P" "../demul/trimmed_fastq/fishpoo_Neg.Control.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.Neg.Control.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x15625.55_1P" "../demul/trimmed_fastq/fishpoo_x15625.55_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x15625.55" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x0.55_1P" "../demul/trimmed_fastq/fishpoo_x0.55_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x0.55" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_WATERCNT_1P" "../demul/trimmed_fastq/fishpoo_WATERCNT_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.WATERCNT" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x0.45_1P" "../demul/trimmed_fastq/fishpoo_x0.45_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x0.45" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x15625.45_1P" "../demul/trimmed_fastq/fishpoo_x15625.45_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x15625.45" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_HAPMIC1.2_1P" "../demul/trimmed_fastq/fishpoo_HAPMIC1.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.HAPMIC1.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x1.55_1P" "../demul/trimmed_fastq/fishpoo_x1.55_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x1.55" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TRIGOTO3_1P" "../demul/trimmed_fastq/fishpoo_TRIGOTO3_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TRIGOTO3" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x5.55_1P" "../demul/trimmed_fastq/fishpoo_x5.55_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x5.55" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x1.45_1P" "../demul/trimmed_fastq/fishpoo_x1.45_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x1.45" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x0.5_1P" "../demul/trimmed_fastq/fishpoo_x0.5_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x0.5" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_CHALBRI.2_1P" "../demul/trimmed_fastq/fishpoo_CHALBRI.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.CHALBRI.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_HAPLMIC2_1P" "../demul/trimmed_fastq/fishpoo_HAPLMIC2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.HAPLMIC2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_NEOLBUS1_1P" "../demul/trimmed_fastq/fishpoo_NEOLBUS1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.NEOLBUS1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x625.50_1P" "../demul/trimmed_fastq/fishpoo_x625.50_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x625.50" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_HAPMIC5.2_1P" "../demul/trimmed_fastq/fishpoo_HAPMIC5.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.HAPMIC5.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_HAPLMIC4_1P" "../demul/trimmed_fastq/fishpoo_HAPLMIC4_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.HAPLMIC4" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_HAPLMIC1_1P" "../demul/trimmed_fastq/fishpoo_HAPLMIC1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.HAPLMIC1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TRIGOTO1_1P" "../demul/trimmed_fastq/fishpoo_TRIGOTO1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TRIGOTO1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x625.55_1P" "../demul/trimmed_fastq/fishpoo_x625.55_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x625.55" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_PERIMIC1_1P" "../demul/trimmed_fastq/fishpoo_PERIMIC1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.PERIMIC1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_LOBOLAB1_1P" "../demul/trimmed_fastq/fishpoo_LOBOLAB1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.LOBOLAB1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_CYPRCOL2_1P" "../demul/trimmed_fastq/fishpoo_CYPRCOL2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.CYPRCOL2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_KITCNT2_1P" "../demul/trimmed_fastq/fishpoo_KITCNT2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.KITCNT2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_CYPRCOL4_1P" "../demul/trimmed_fastq/fishpoo_CYPRCOL4_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.CYPRCOL4" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x1.5_1P" "../demul/trimmed_fastq/fishpoo_x1.5_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x1.5" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TRIGOTO5_1P" "../demul/trimmed_fastq/fishpoo_TRIGOTO5_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TRIGOTO5" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_CHARCNT_1P" "../demul/trimmed_fastq/fishpoo_CHARCNT_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.CHARCNT" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x25.45_1P" "../demul/trimmed_fastq/fishpoo_x25.45_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x25.45" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_CHALBRI1_1P" "../demul/trimmed_fastq/fishpoo_CHALBRI1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.CHALBRI1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TANGIRA.2_1P" "../demul/trimmed_fastq/fishpoo_TANGIRA.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TANGIRA.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_KITCNT1_1P" "../demul/trimmed_fastq/fishpoo_KITCNT1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.KITCNT1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TREMBEN1_1P" "../demul/trimmed_fastq/fishpoo_TREMBEN1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TREMBEN1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_CYPRCOL1.2_1P" "../demul/trimmed_fastq/fishpoo_CYPRCOL1.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.CYPRCOL1.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x3125.45_1P" "../demul/trimmed_fastq/fishpoo_x3125.45_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x3125.45" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TREMBEN.2_1P" "../demul/trimmed_fastq/fishpoo_TREMBEN.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TREMBEN.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_HAPMIC3.2_1P" "../demul/trimmed_fastq/fishpoo_HAPMIC3.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.HAPMIC3.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x25.50_1P" "../demul/trimmed_fastq/fishpoo_x25.50_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x25.50" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_CYPRCOL3_1P" "../demul/trimmed_fastq/fishpoo_CYPRCOL3_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.CYPRCOL3" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TRIGOTO2_1P" "../demul/trimmed_fastq/fishpoo_TRIGOTO2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TRIGOTO2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_LOBOLAB.2_1P" "../demul/trimmed_fastq/fishpoo_LOBOLAB.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.LOBOLAB.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_PLECSTA1_1P" "../demul/trimmed_fastq/fishpoo_PLECSTA1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.PLECSTA1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_CYPRCOL1_1P" "../demul/trimmed_fastq/fishpoo_CYPRCOL1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.CYPRCOL1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_LEPIPRO1_1P" "../demul/trimmed_fastq/fishpoo_LEPIPRO1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.LEPIPRO1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TROPMOO1_1P" "../demul/trimmed_fastq/fishpoo_TROPMOO1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TROPMOO1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x125.45_1P" "../demul/trimmed_fastq/fishpoo_x125.45_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x125.45" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x3125.50_1P" "../demul/trimmed_fastq/fishpoo_x3125.50_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x3125.50" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x5.50_1P" "../demul/trimmed_fastq/fishpoo_x5.50_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x5.50" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_CYPRCOL5_1P" "../demul/trimmed_fastq/fishpoo_CYPRCOL5_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.CYPRCOL5" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x125.50_1P" "../demul/trimmed_fastq/fishpoo_x125.50_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x125.50" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_Neg.Control.1_1P" "../demul/trimmed_fastq/fishpoo_Neg.Control.1_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.Neg.Control.1" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_TRIGOTO6_1P" "../demul/trimmed_fastq/fishpoo_TRIGOTO6_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.TRIGOTO6" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_x25.55_1P" "../demul/trimmed_fastq/fishpoo_x25.55_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.x25.55" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_FOOD_1P" "../demul/trimmed_fastq/fishpoo_FOOD_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.FOOD" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_HAPMIC2.2_1P" "../demul/trimmed_fastq/fishpoo_HAPMIC2.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.HAPMIC2.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_HAPMIC6.2_1P" "../demul/trimmed_fastq/fishpoo_HAPMIC6.2_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.HAPMIC6.2" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_HAPLMIC6_1P" "../demul/trimmed_fastq/fishpoo_HAPLMIC6_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.HAPLMIC6" > /dev/null 2> /dev/null
+RUNNING : flash "../demul/trimmed_fastq/fishpoo_HAPLMIC3_1P" "../demul/trimmed_fastq/fishpoo_HAPLMIC3_2P" -m 10 -M 70 -p 33 -s 20 -r 300 -x 0.25 -d "../demul/qiime_ready" -o "fishpoo.HAPLMIC3" > /dev/null 2> /dev/null

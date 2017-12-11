@@ -1,0 +1,23 @@
+
+\begin{figure}
+    \centering
+    \subfloat[{\tt CHALBRI1\_1198}]{%
+        \includegraphics[width=0.5\textwidth]{figures/phylosig_heattree_highsig}
+    }
+    \subfloat[{\tt CHALBRI1\_4931}]{%
+        \includegraphics[width=0.5\textwidth]{figures/phylosig_heattree_lowsig}
+    }\\
+    \subfloat[]{%
+        \resizebox{\textwidth}{!}{%
+        \begin{tabular}{@{}lllcccccc@{}}
+            \toprule
+            \textbf{OTU name} & \textbf{Tax. assignment} & \textbf{Tax. level} & \textbf{\% id.} & \textbf{Rel. abund.} & \textbf{Bloomberg's $K$} & \textbf{Pagel's $\lambda$} & \textbf{Moran's $\hat{I}$} & \textbf{Abouheif's $C_{\mathrm{mean}}$} \\ \midrule
+            {\tt CHALBRI1\_1198} & {\em Aeromonas} & genus & 99\% & 0.14\% & 0.792551 & 0.640501 & 0.330350 & 0.394249 \\
+            {\tt CHALBRI1\_4931} & Enterobacteriaceae & family & 100\% & 0.12\% & 0.425427 & 0.000047 & 0.005716 & 0.046999 \\
+            \bottomrule
+        \end{tabular}%
+        }
+    }
+    \caption{Two examples of bacterial associations examined as traits of their hosts, one with high phylogenetic signal \textbf{(a)} and one with low phylogenetic signal \textbf{(b)} (trait values in the tree legends are expressed in parts per hundred). However, the taxonomic assignments suggest that the second OTU may represent a more diverse group of organisms. If more than one of these organisms is present, then it is likely that each would have a different pattern of relationships with the host organisms. The sum of these patterns is likely to have a lower phylogenetic signal than any particular one of them. In principle, one could compensate for the different levels of diversity represented by different 16S sequences, but any such approach would require a relatively complete and unbiased database of microbial diversity. Unfortunately, such a database does not yet exist.}
+    \label{fig:FP_fig4}
+\end{figure}

@@ -1,0 +1,45 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+\begin{table}[]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llllr@{}}
+\toprule
+\textbf{Sample ID} & \textbf{Sample source}                   & \multicolumn{1}{c}{\textbf{Barcode 1}} & \multicolumn{1}{c}{\textbf{Barcode 2}} & \multicolumn{1}{l}{\textbf{Reads after QC}} \\ \midrule
+CYPRCOL1           & \textit{Chalinochromis brichardi}        & AACGCTAA                               & GACTGGTT                               & 174,725                                     \\
+CYPRCOL2           & \textit{Chalinochromis brichardi}        & AACGCTAA                               & TTAGCGTT                               & 271,491                                     \\
+CYPRCOL3           & \textit{Chalinochromis brichardi}        & AACGCTAA                               & GTAGTCTT                               & 263,386                                     \\
+CYPRCOL4           & \textit{Chalinochromis brichardi}        & AACGCTAA                               & TATCGATT                               & 284,670                                     \\
+CYPRCOL5           & \textit{Chalinochromis brichardi}        & AACGCTAA                               & CAATTGGT                               & 242,392                                     \\
+CYPRCOL6           & \textit{Chalinochromis brichardi}        & AACGCTAA                               & ACTTCAGT                               & 241,783                                     \\
+HAPLMIC1           & \textit{Haplotaxodon microlepis}         & AACGCTAA                               & GCGGCAAT                               & 100,413                                     \\
+HAPLMIC2           & \textit{Haplotaxodon microlepis}         & AACGCTAA                               & TAAGGTTG                               & 72,009                                      \\
+HAPLMIC3           & \textit{Haplotaxodon microlepis}         & AACGCTAA                               & TTATTAGG                               & 55,773                                      \\
+HAPLMIC4           & \textit{Haplotaxodon microlepis}         & AACGCTAA                               & ATCAGAGG                               & 115,762                                     \\
+HAPLMIC5           & \textit{Haplotaxodon microlepis}         & AACGCTAA                               & CTCGACCG                               & 145,978                                     \\
+HAPLMIC6           & \textit{Haplotaxodon microlepis}         & AACGCTAA                               & GCCATTAG                               & 162,213                                     \\
+TRIGOTO1           & \textit{Triglachromis otostigma}         & AACGCTAA                               & CGCATGAG                               & 301,107                                     \\
+TRIGOTO2           & \textit{Triglachromis otostigma}         & AACGCTAA                               & CTCCGTTC                               & 326,061                                     \\
+TRIGOTO3           & \textit{Triglachromis otostigma}         & AACGCTAA                               & GCGTAGGC                               & 207,092                                     \\
+TRIGOTO4           & \textit{Triglachromis otostigma}         & AACGCTAA                               & GGTAACGC                               & 146,460                                     \\
+TRIGOTO5           & \textit{Triglachromis otostigma}         & AACGCTAA                               & CAGCCTCC                               & 177,713                                     \\
+TRIGOTO6           & \textit{Triglachromis otostigma}         & AACGCTAA                               & TGGCATCC                               & 45,174                                      \\
+LEPIPRO1           & \textit{Lepidiolamprologus profundicola} & AACGCTAA                               & CCTAATCC                               & 179,020                                     \\
+TROPMOO1           & \textit{Tropheus moorii}                 & AACGCTAA                               & CGGCCAAC                               & 246,050                                     \\
+CHALBRI1           & \textit{Cyprichromis coloratus}          & AACGCTAA                               & AGTTAATA                               & 201,117                                     \\
+TANGIRA1           & \textit{Tanganicodus irsacae}            & AACGCTAA                               & AGCAGTCA                               & 289,405                                     \\
+LOBOLAB1           & \textit{Lobochilotes labiatus}           & AACGCTAA                               & AATCGCCA                               & 121,979                                     \\
+NEOLBUS1           & \textit{Neolamprologus buescheri}        & AACGCTAA                               & TCGCTGAA                               & 106,657                                     \\
+TREMBEN1           & \textit{Trematochromis benthicola}       & CAACCTTA                               & GACTGGTT                               & 107,462                                     \\
+XENOFLA1           & \textit{Xenotilapia flavipinnis}         & CAACCTTA                               & TTAGCGTT                               & 152,933                                     \\
+KITCNT1            & Kit control                              & CAACCTTA                               & GTAGTCTT                               & 14,329                                      \\
+CHARCNT            & Charcoal control                         & CAACCTTA                               & TATCGATT                               & 21,176                                      \\
+WATERCNT           & Water control                            & CAACCTTA                               & CAATTGGT                               & 10,326                                      \\
+FOOD               & Food control                             & CAACCTTA                               & ACTTCAGT                               & 76,932                                      \\
+NEGCNT             & PCR control                              & CAACCTTA                               & TAAGGTTG                               & 174                                         \\ \bottomrule
+\end{tabular}%
+}
+\caption{\textbf{Samples, barcodes and yields.} Except for controls, all samples are from stool of the organism indicated.}
+\label{FP_barcodes}
+\end{table}

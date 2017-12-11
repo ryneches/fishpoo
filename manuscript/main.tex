@@ -1,0 +1,98 @@
+%\documentclass[PhD]{ucdavisthesis}
+%\documentclass{article}
+\documentclass[
+10pt, % Main document font size
+a4paper, % Paper type, use 'letterpaper' for US Letter paper
+oneside, % One page layout (no page indentation)
+%twoside, % Two page layout (page indentation for binding and different headers)
+headinclude,footinclude, % Extra spacing for the header and footer
+BCOR5mm, % Binding correction
+]{scrartcl}
+
+\input{structure.tex}
+
+\usepackage{enumitem}
+%\usepackage{caption}
+%\usepackage{subcaption}
+%\usepackage{subfigure}
+\usepackage{subfiles}
+\usepackage{fancyref}
+\usepackage{hyperref}
+\usepackage{gensymb}
+\usepackage{siunitx}
+\usepackage{upgreek}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[utf8]{inputenc}
+% bibliographies
+\usepackage[backend=biber,defernumbers=true,sorting=none]{biblatex}
+
+%\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+\makeatletter
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+\DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}
+\DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+\makeatother
+
+\addbibresource[label=FishPoo]{FishPoo.bib}
+
+\title{\normalfont\spacedallcaps{Prediction of ecological function in the microbiome using machine learning on the graph spectra of coevolving subnetworks}}
+
+\author{Russell Y. Neches\\Matthew D. McGee\\Peter C. Wainwright\\Jonathan A. Eisen}
+
+\begin{document}
+
+\renewcommand{\sectionmark}[1]{\markright{\spacedlowsmallcaps{#1}}} % The header for all pages (oneside) or for even pages (twoside)
+%\renewcommand{\subsectionmark}[1]{\markright{\thesubsection~#1}} % Uncomment when using the twoside option - this modifies the header on odd pages
+\lehead{\mbox{\llap{\small\thepage\kern1em\color{halfgray} \vline}\color{halfgray}\hspace{0.5em}\rightmark\hfil}} % The header style
+
+\pagestyle{scrheadings} % Enable the headers specified in this block
+
+\maketitle % Print the title/author/date block
+
+\setcounter{tocdepth}{2} % Set the depth of the table of contents to show sections and subsections only
+
+\tableofcontents % Print the table of contents
+
+%\listoffigures % Print the list of figures
+
+%\listoftables % Print the list of tables
+
+%\section{Author contributions}
+
+%This project was conceived, initiated and carried to completion by Russell Y. Neches with input from Peter C. Wainwright, in collaboration with Matthew D. McGee and in collaboration with, and with support and mentorship from Jonathan A. Eisen. With the exception of animal handling, experiments were planned and performed by Russell Y. Neches. Animals were handled by Matthew D. McGee under the supervision of Peter C. Wainwright. Experimental apparatus was constructed by Russell Y. Neches. Sample preparation and DNA sequencing was performed by Qingyi Zhang. Software was written, analysis was performed by Russell Y. Neches with advice from Matthew D. McGee. The manuscript was written by Russell Y. Neches.
+
+\subfile{abstract}
+\subfile{introduction}
+\subfile{background}
+\subfile{methods}
+\subfile{discussion}
+\subfile{conclusion}
+
+
+\section{Funding}
+
+RYN was funded by a grant from the Alfred P. Sloan Foundation to Jonathan A. Eisen.
+
+\printbibliography[heading=subbibliography]
+%\printbibliography[segment=2]
+
+\clearpage
+
+\subfile{tables/table2}
+\subfile{tables/table3}
+
+%\end{refsection}
+
+%\nocite{*}
+%\printbibliography
+
+\end{document}

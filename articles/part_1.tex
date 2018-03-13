@@ -1,15 +1,76 @@
+\documentclass[
+10pt, % Main document font size
+a4paper, % Paper type, use 'letterpaper' for US Letter paper
+oneside, % One page layout (no page indentation)
+%twoside, % Two page layout (page indentation for binding and different headers)
+headinclude,footinclude, % Extra spacing for the header and footer
+BCOR5mm, % Binding correction
+]{scrartcl}
 
-Biology has a major problem with charisma. Humans relate to some organisms more easily than others. Humans are drawn to organisms with which we have things in common. Fuzzy creatures get more attention than scaly or slimy ones. Creatures with faces get more attention than creatures without. Animals get more attention than plans. By diversity, biomass, age or metabolic wattage, eukaryotes make up a tiny fraction of life on Earth, but they occupy almost all of our attention. The same phenomenon happens in ecology.
+\input{structure.tex}
+
+\usepackage{enumitem}
+%\usepackage{caption}
+%\usepackage{subcaption}
+%\usepackage{subfigure}
+\usepackage{subfiles}
+\usepackage{fancyref}
+\usepackage{hyperref}
+\usepackage{gensymb}
+\usepackage{siunitx}
+\usepackage{upgreek}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[utf8]{inputenc}
+% bibliographies
+\usepackage[backend=biber,defernumbers=true,sorting=none]{biblatex}
+
+%\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+\makeatletter
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+\DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}
+\DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+\makeatother
+
+\addbibresource[label=FishPoo]{FishPoo.bib}
+
+\title{\normalfont\spacedallcaps{Prediction of ecological function in the microbiome using machine learning on the graph spectra of coevolving subnetworks}}
+
+\author{Russell Y. Neches\\Matthew D. McGee\\Peter C. Wainwright\\Jonathan A. Eisen}
+
+\begin{document}
+
+\renewcommand{\sectionmark}[1]{\markright{\spacedlowsmallcaps{#1}}} % The header for all pages (oneside) or for even pages (twoside)
+%\renewcommand{\subsectionmark}[1]{\markright{\thesubsection~#1}} % Uncomment when using the twoside option - this modifies the header on odd pages
+\lehead{\mbox{\llap{\small\thepage\kern1em\color{halfgray} \vline}\color{halfgray}\hspace{0.5em}\rightmark\hfil}} % The header style
+
+\pagestyle{scrheadings} % Enable the headers specified in this block
+
+\maketitle % Print the title/author/date block
+
+\setcounter{tocdepth}{2} % Set the depth of the table of contents to show sections and subsections only
+
+%\tableofcontents % Print the table of contents
+
+Biology has a major problem with charisma. Humans relate to some organisms more easily than others. Fuzzy creatures get more attention than scaly or slimy ones. Creatures with faces get more attention than creatures without. Animals get more attention than plans. By abundance, diversity, biomass, age or metabolic wattage, eukaryotes make up a tiny fraction of life on Earth, but they occupy almost all of our attention. The same phenomenon happens in ecology.
 
 Ecology is the study of how organisms interact with one another and with their environment. Some relationships are more charismatic than others, and those relationships dominate our attention. There are trophic strategies in myriad diversity, but predator-prey interactions make the best television. Parasites give us the creeps as much as they fascinate us. Mutualisms speak powerfully to aspirations and anxieties regarding our own societies. Disease has shaped and reshaped nations, and drives a large part of the moral imperative behind biological research. Nevertheless, the great majority of ecological relationships are none of the above, or cannot neatly fit into any one category.
 
-Charisma is one of many heuristics that help us identify things that are likely to be relevant to our own experience. Heuristics are useful, but usefulness should not be mistaken for correctness. The fact that charisma cannot be separated from the observer means that it generalizes poorly. The fact that charisma is a heuristic measure of importance means that it can still be wrong more often than right. It is a form of bias, and distorts the model of reality we use to understand how things work.
+Charisma is one of many heuristics that help us identify things that are likely to be relevant to our own experience. Heuristics are useful, but usefulness should not be mistaken for accuracy. The fact that charisma cannot be separated from the observer means that it generalizes poorly. The fact that charisma is a heuristic measure of importance means that it can still be wrong more often than right. It is a form of bias, and distorts the model of reality we use to understand how things work.
 
-Biologists address this bias by applying other metrics for importance, and often look to ecology for parameters to include in these metrics. Importance is contextual, after all, and ecology is the study of the relationships that comprise the context in which organisms live. How, then, can ecology correct for its own charisma bias? Relationships can be categorized by their effects or their dynamics, but unless they exhibit a charismatic property -- often a symmetry in structure, a simplicity of concept or an analogy to human experience -- they can defy categorization or escape notice altogether. The symmetry of the Red Queen's Race, the straightforwardness of a predator's relationship with its prey, or the (projected) virtue of cooperation are somewhat unusual properties to find in the natural world. Most relationships are too complicated or ambiguous to clearly exhibit them. They are not charismatic.
+Biologists address charisma bias by applying other metrics for importance, and often look to ecology for parameters to include in these metrics. Importance is contextual, after all, and ecology is the study of the relationships that comprise the context in which organisms live. How, then, can ecology correct for its own charisma bias? Relationships can be categorized by their effects or their dynamics, but unless they exhibit a charismatic property -- often a symmetry in structure, a simplicity of concept or an analogy to human experience -- they can defy categorization or escape notice altogether. The symmetry of the Red Queen's Race, the straightforwardness of a predator's relationship with its prey, or the (projected) virtue of cooperation are somewhat unusual properties to find in the natural world. Most relationships are too complicated or ambiguous to clearly exhibit them. They are not charismatic.
 
 % box
 
-The low correlation of the gopher-louse interaction.
+\subfile{figures/gophers}
 
 % box
 
@@ -29,7 +90,9 @@ This structure contains an implicit opinion that relationships that are ``import
 
 %% box
 
-Constructing the graph adjacency matrix for a co-phylogeny.
+\subfile{../manuscript/figures/figure14}
+
+\subfile{figures/adjacency}
 
 %% box
 
@@ -40,3 +103,19 @@ This is a complex way to structure this data, but it does lend itself to a forma
 There are downsides to working in these abstract spaces. Particularly, the intermediate steps can be difficult to interpret intuitively. Nevertheless, if the goal is to address charisma bias, placing {\em all} of the available data into the same context is a good start. 
 
 Machine learning does not eliminate bias; it formalizes it. It provides a framework within which one can select, quantify, explore and hopefully understand bias. Perhaps a formal approach will simply confirm the categories we already use to understand ecological relationships. Perhaps it will suggest new categories.
+
+\section{Funding}
+
+RYN was funded by a grant from the Alfred P. Sloan Foundation to Jonathan A. Eisen.
+
+\printbibliography[heading=subbibliography]
+%\printbibliography[segment=2]
+
+\clearpage
+
+%\end{refsection}
+
+%\nocite{*}
+%\printbibliography
+
+\end{document}

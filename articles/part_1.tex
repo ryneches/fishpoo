@@ -58,7 +58,20 @@ BCOR5mm, % Binding correction
 
 \setcounter{tocdepth}{2} % Set the depth of the table of contents to show sections and subsections only
 
-%\tableofcontents % Print the table of contents
+\tableofcontents % Print the table of contents
+
+% outline
+%     part 1 : charisma bias, hijacking ML, co-phylogeny as graph
+%     part 2 : graph moments, spectral theory, first feature space
+%     part 3 : spectral distance, null hypotheses, clustering
+%     part 4 : building a feature space with training data & distances
+%     part 5 : graph kernels, clustering revisited
+%     part 6 : bulding a real feature space, ML
+%     part 7 : fish poo, bird poo
+%     part 8 : a graph of many trees
+
+\section{Introduction}
+%     part 1 : charisma bias, hijacking ML, co-phylogeny as graph
 
 Biology has a major problem with charisma. Humans relate to some organisms more easily than others. Fuzzy creatures get more attention than scaly or slimy ones. Creatures with faces get more attention than creatures without. Animals get more attention than plans. By abundance, diversity, biomass, age or metabolic wattage, eukaryotes make up a tiny fraction of life on Earth, but they occupy almost all of our attention. The same phenomenon happens in ecology.
 
@@ -66,7 +79,7 @@ Ecology is the study of how organisms interact with one another and with their e
 
 Charisma is one of many heuristics that help us identify things that are likely to be relevant to our own experience. Heuristics are useful, but usefulness should not be mistaken for accuracy. The fact that charisma cannot be separated from the observer means that it generalizes poorly. The fact that charisma is a heuristic measure of importance means that it can still be wrong more often than right. It is a form of bias, and distorts the model of reality we use to understand how things work.
 
-Biologists address charisma bias by applying other metrics for importance, and often look to ecology for parameters to include in these metrics. Importance is contextual, after all, and ecology is the study of the relationships that comprise the context in which organisms live. How, then, can ecology correct for its own charisma bias? Relationships can be categorized by their effects or their dynamics, but unless they exhibit a charismatic property -- often a symmetry in structure, a simplicity of concept or an analogy to human experience -- they can defy categorization or escape notice altogether. The symmetry of the Red Queen's Race, the straightforwardness of a predator's relationship with its prey, or the (projected) virtue of cooperation are somewhat unusual properties to find in the natural world. Most relationships are too complicated or ambiguous to clearly exhibit them. They are not charismatic.
+Biologists address charisma bias by applying other metrics for importance, and often look to ecology for parameters to include in these metrics. Importance is contextual, after all, and ecology is the study of the relationships that comprise the context in which organisms live. How, then, can ecology correct for its own charisma bias? Relationships can be categorized by their effects or their dynamics, but unless they exhibit a charismatic property -- often a symmetry in structure, a simplicity of concept or an analogy to human experience -- they can defy categorization or escape notice altogether. The symmetry of the Red Queen's Race, the straightforwardness of a predator's relationship with its prey, or the (projected) virtue of cooperation are conspicuous because they are unusual. Most relationships are too complicated or ambiguous to clearly exhibit them. They are not charismatic.
 
 % box
 
@@ -76,33 +89,102 @@ Biologists address charisma bias by applying other metrics for importance, and o
 
 This is especially evident in microbial interactions, where high-throughput sequencing has made it possible to generate spectacular quantities of complex, nuanced and mostly inconclusive data. This is frustrating, but the scale of the problem represents a unique opportunity to address charisma bias in ecology.
 
-Correcting a bias always begins with the same task : find a way to collect data in a way this isn't subject to the bias. Microbiome surveys are vulnerable to a variety of technical biases -- there is {\em always} another bias -- but sequencing machines are not impressed by charisma. Based on this data, it is possible to construct and test new metrics of importance, and to see which relationships merit further attention.
+Correcting a bias always begins with the same task : find a way to collect data in a way this isn't subject to the bias. Microbiome surveys are vulnerable to a variety of technical biases (there is {\em always} another bias), but sequencing machines are not impressed by charisma. Based on this data, it is possible to construct and test new metrics of importance, and to see which relationships merit further attention.
 
-Unfortunately, we do not have very many theoretical tools that address the question of how to categorize ecological relationship gathered using an non-targeted, unsupervised process.
+Unfortunately, we do not have very many theoretical tools that address the question of how to categorize ecological relationship data gathered using an non-targeted, unsupervised process.
 
-Fortunately, ecology is not the only field that cares about the problem of detecting and assigning categories to complex relationships from non-targeted data. Vast resources have been devoted to this problem in the form of social networks among human beings. The theoretical approaches and software developed for this purpose can be directly applied to microbiome data.
+Fortunately, ecology is not the only field that cares about the problem of detecting and assigning categories to complex relationships from non-targeted data. Vast resources have been devoted to this problem when it appears in the form of social networks of human beings. Technology companies want to know how to detect and identify categories within social networks so that they can sell more advertisements, and pursuit of this capability steers R\&D budgets in the billions of dollars. If meaningful representations of microbiome data can be constructed in the same mathematical framework, we can divert some of those resources into our own projects. We can parasitize the tech companies.
 
-Microbiome data yields two pieces of information : the evolutionary relationships among the organisms, and the observed interactions among those organisms. The first pertains to how the organisms have evolved, and the second pertains to how they interact. Evolutionary relationships tells us about what happened over deep time, and ecological relationships tell us about what was happening at the moment the samples were collected. There are many ways structure this information, and each carries an implicit opinion about what properties of these relationships are important.
+A successful parasite must have a strategy for invading its host. If we want to abscond with their shiny computational tools, we need a way to inject our data into them. In the next post, I will lay out my strategy for injecting microbiome data into off-the-shelf machine learning frameworks, and in the subsequent posts, I will try to give you a taste of why this is awesome.
 
-One way to structure this information to build phylogenetic trees for each group of organisms involved in the interaction, and note which organisms at the tips of these trees were observed to interact with which other organisms. This is called a co-phylogeny, and is a model found in the literature on host-parasite interactions and on the reconciliation of gene trees into species trees. Usually, there are two trees linked by interactions, as with host-parasite interactions.
+%Co-phylogeny is a relatively complex way to structure microbiome data, but it does lend itself to a formalized mathematical treatment as a labeled graph. Once placed into this form, a whole new stack of tools becomes available. Dimension reduction and feature extraction methods like graph spectral analysis, graph kernels, extreme sets and random walks can be used to project high-dimensional data about ecological and evolutionary relationships into a common feature space suitable for supervised learning. Simulation data can be projected into the same feature space for unsupervised learning.
 
-This structure contains an implicit opinion that relationships that are ``important'' now were ``important'' in the past, and as such, may have influenced the evolution of the organisms in involved. Exactly what is meant by ``important'' depends on what calculations one performs, but it should be acknowledged that simply posing the problem this way is not a neutral choice. There are other valid ways to think about this information.
+But, before we get into that, it needs to be said that there are downsides to these tools. Particularly, the intermediate steps in machine learning can be difficult to interpret intuitively, and machine learning stacks tend to both reflect and obfuscate the biases of their designers. Nevertheless, if the goal is to address charisma bias, placing {\em all} of the available data into the same context is a good start. Machine learning does not eliminate bias; it formalizes it. This can cut two ways. If used uncritically, machine learning can atomize and dissolve the designer's bias into the mathematics in ways that can be very harmful. Or, it can provide a framework within which one can select, quantify, explore and hopefully understand one's own biases.
 
-%% box
+Always compute responsibly.
+
+\section{Representing a co-phylogeny as a graph}
+
+Microbiome data yields two types of information. The sequences themselves shed light on relationships among organisms in through time, and the distributions and frequencies of those sequences on relationships among organisms across space. Evolutionary relationships tells us about what happened over deep time, and ecological relationships tell us about what was happening at the moment the samples were collected. There are many ways structure and interpret this information, and each carries an implicit opinion about what properties of these relationships are important.
+
+One way to structure this information to build phylogenetic trees for each group of organisms involved in the interaction, and note which organisms at the tips of these trees were observed to interact with which other organisms. This model is called a co-phylogeny, and pops up in the literature whenever the evolution of two things is somehow linked together.\footnote{It is important to note that a co-phylogeny contains an implicit opinion that relationships that are ``important'' now were ``important'' in the past, and as such, may have influenced the evolution of the organisms in involved. Exactly what is meant by ``important'' depends on what the trees represent and on the calculations are performed on the co-phylogeny, but it should be acknowledged that simply arranging the data this way is not a neutral choice. There are other valid ways to think about this information.} For example, phylogenomics addresses the implications of the fact that genes within the same genome have unique, individual evolutionary histories. Trees representing the evolution of homologous genes can be linked by the genomes in which the homologs co-occur, or they can be linked to trees representing the evolution of the species. Alternatively, the two trees can represent two very different groups of species that interact ecologically, such a group of host organisms and their parasites.
+
+Co-phylogenies exist on a continuum of intimacy. At one extreme, different regions of a single gene could evolve under somewhat different selective pressures. For example, the evolution of an catalytic domain and a signaling domain of a protein could be examined by building trees for the two domains and linking them through each allele. At the other extreme, the evolution of two groups of species that do not interact may fall under a common influence. For example, penguins and flowering plants probably did not strongly influence each other's evolution, but parallels in their co-phylogeny indicate that the evolution of both was influenced by the breakup the Gondwanan super-continent. 
+
+% box
+
+\begin{itemize}
+\item domains within the same gene (domain-tree:domain-tree)
+\item domains of a protein verses the whole protein 
+\item alleles of different genes (phylogenomics)
+\item alleles of a gene verses the species (speciation)
+\item nuclear verses mitochondrial or chloroplast genes (endosymbiosis)
+\item host verses parasite (antagonistic coevolution)
+\item host verses symbiont (mutualistic coevolution)
+\item interacting species (comensal coevolution)
+\item co-distributed species (biogeography, parallel evolution)
+\item propinquity (association without coevolution)
+\end{itemize}
+
+% box
+
+Co-phylogenies built from microbiome data represent a mixture of the last six categories. This is a substantial theoretical challenge. Most models for coevolution are designed to explore carefully framed interactions. Just as human beings in large social networks are often only vaugely aware of the emergent cliques to which they belong, microbiome data does not come with neatly curated host-microbe interactions. The salient features embedded in the graph must somehow be described, detected and extracted.
+
+So, practically speaking, how does one go about building this representation? The first step is to build an adjacency matrix. The adjacency matrix of a graph of $n$ nodes is an $n \times n$ matrix. Connections between nodes (``edges,'' in graph jargon) are represented as 1's in the row and column for the two nodes. Because there is a row and a column for each node, there are two ways places to mark a connection. If you imagine connections as going {\em from} the column node {\em to} the row node, you can have connections with a direction. Directed graphs are useful when the nodes represent things that can be connected asymmetrically. Social networks are like this; Alice might say that she is friends with Bob, but Bob might not reciprocate because he forgot his password (we all know that Alice and Bob are friends in real life). 
 
 \subfile{../manuscript/figures/figure14}
+
+Our nodes represent leafs and junctions of phylogenetic trees, and our edges represent either phylogenetic distance between tree junctions or ecological connections between leafs. It's not obvious what ``direction'' would mean for that kind of object, and so we're not going to use a directed graph. Undirected graphs can be represented either by a symmetric adjacency matrix ($A_{i,j} \equiv A_{j,i}$), or by a triangular half-matrix. I hate looking at plots of triangular matrixes, so I'm always going to draw them with top and bottom triangles. This is redundant information that we might want to discard later for faster performance, but for now we'll use it to make the plots easier to understand.
+
+Adjacency matrixes can have connections from a node back to itself. These go along the diagonal ($A_{i,i}$). In a directed graph, it doesn't matter which direction a self-connected edge is oriented, so it makes sense that they don't have a corresponding double in the other triangle of the adjacency matrix. Or, they are their own double, if you prefer to think of it that way. For our purposes, self-connected nodes don't make any sense. We will disallow them by requiring that $A_{i,i} \equiv 0$.
+
+So far, we've only included information about {\em whether or not} two nodes are connected, and so edges are represented as either 0 or 1. Instead of representing a social network with a binary value (Alice is friends with Bob, but not with Mallory), we might represent it with a continuous quantity (Alice has sent Bob 14.3 gigabytes of cat videos). When we put those quantities into the adjacency matrix, the graph jargon for this is a {\em weighted} adjacency matrix. In Figure \ref{FP_adjacency}, you can see how this works for a small tree. 
+
+We have two types of information we want to include in our graph; phylogenetic branch length and ecological associations. Figure \ref{FP_adjacency} only shows branch lengths. How do we get all of that into an adjacency matrix? Hold onto your hats, folks, because this is the one truly original idea in my Ph.D. All the nodes belong to either one tree or the other. So you just... stick them together. Yep. That's it. 
+
+Graphs are very flexible objects. You can represent a tree as a graph. Graphs don't have to be fully connected. A bunch of nodes with no connections to one another is still a valid graph (the adjacency matrix would be all zeros). So, you can make adjacency matrixes for your trees, and paste them together along their diagonals. In the co-phylogeny, the leafs
+
+I've shown in Figure \ref{fig:adjacency}.
+
 
 \subfile{figures/adjacency}
 
 %% box
 
-Although it is not often done this way, there is no reason to restrict co-phylogeny to two trees. For example, {\em Leucochloridium} is a genus of flatworms that parasitize land snails, causing the eyestalks of the snail to resemble caterpillars. The snails are then eaten by birds, and the bird completes the parasite's life-cycle by dispersing its eggs. A complete co-phylogeny of this relationship would have phylogenetic trees of the parasites, the snails and the birds linked by observations of their respective interactions. This approach can be generalized to systems like hot-springs, with members of each major clade of organisms linked by the sites where they were observed to co-occur.
+In the next section, we will look at some relatively simple things we can do by representing co-phylogenies as graphs.
 
-This is a complex way to structure this data, but it does lend itself to a formalized mathematical treatment as a labeled graph. Once placed into this form, a whole new stack of tools becomes available. Dimension reduction and feature extraction methods like graph spectral analysis, graph kernels, extreme sets and random walks can be used to project high-dimensional data about ecological and evolutionary relationships into a common feature space suitable for supervised learning. Simulation data can be projected into the same feature space for unsupervised learning.
+\section{A first look at co-phylogeny graphs}
+%     part 2 : graph moments, spectral theory, first feature space
 
-There are downsides to working in these abstract spaces. Particularly, the intermediate steps can be difficult to interpret intuitively. Nevertheless, if the goal is to address charisma bias, placing {\em all} of the available data into the same context is a good start. 
+Although they are feature-rich, comparing graphs to one another it is not straightforward. The most obvious question, {\em do these two graphs have the same topology?} is the dreaded graph isomorphism problem, and it is np-hard. The only way we know how to solve it is with computational bruit-force. Fortunately, finding exact topological congruence is not particularly useful to us. We want to look for motifs within the graph that correspond to relationship categories. Social cliques of humans that form by different processes tend to have different topologies in a social network; if we extract all the subgraphs that represent families, they will probably be structured somewhat differently than the subgraphs representing workplaces. Similarly, an endosymbiosis is likely to be structured differently than a comensalism in a microbiome co-phylogeny graph. To describe and detect these motifs, we need a way to find {\em similar} graphs.
 
-Machine learning does not eliminate bias; it formalizes it. It provides a framework within which one can select, quantify, explore and hopefully understand bias. Perhaps a formal approach will simply confirm the categories we already use to understand ecological relationships. Perhaps it will suggest new categories.
+Broadly speaking, there are two ways to go about this. You can calculate moments of the graph, or you can build similarity or dissimilarity metrics on graphs. We'll look at dissimilarity metrics of graph spectra in Part 3 and dissimilarity metrics based om graph kernels in Part 5. 
+
+A moment is a value that represents some property of a graph. For example, what is the average number of connections per node? What is the standard deviation of the number of connections per node? What is the smallest number of connections that must be broken to divide the graph into two pieces? None of these can reveal a very clear picture of the g
+
+In the next section, we will look at some more sophisticated moments on graph topology, and we'll start using them to cluster graphs.
+
+\section{Using spectral theory for moments and clustering}
+%     part 3 : spectral distance, null hypotheses, clustering
+
+If you take an infinitely long random walk from node to node within a graph, the frequency that each node will be visited relative to the others is called the {\em spectrum} of the graph, and is a powerful way to simplify the topology of the graph into one dimension (there is also a convenient shortcut to calculating the frequencies without actually performing the random walk). Graph spectra are not guaranteed to be unique; graphs with different topologies can have the same spectra, and are called {\em isospectral graphs}. Nevertheless, the bigger the graph, the less likely any pair of them will be isospectral. One can extract moments from the one-dimensional spectrum, such as its skewness, kurtosis 
+
+\section{Building a feature space}
+%     part 4 : building a feature space with training data & distances
+
+\section{Clustering with graph kernels}
+%     part 5 : graph kernels, clustering revisited
+
+\section{A graph co-phylogeny feature space, all grown up}
+%     part 6 : bulding a real feature space, ML
+
+\section{Machine learning, finally}
+%     part 7 : fish poo, bird poo
+
+\section{A graph of many trees}
+%     part 8 : a graph of many trees
+
+
 
 \section{Funding}
 

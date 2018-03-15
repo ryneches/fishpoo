@@ -140,14 +140,26 @@ Adjacency matrixes can have connections from a node back to itself. These go alo
 
 So far, we've only included information about {\em whether or not} two nodes are connected, and so edges are represented as either 0 or 1. Instead of representing a social network with a binary value (Alice is friends with Bob, but not with Mallory), we might represent it with a continuous quantity (Alice has sent Bob 14.3 gigabytes of cat videos). When we put those quantities into the adjacency matrix, the graph jargon for this is a {\em weighted} adjacency matrix. In Figure \ref{FP_adjacency}, you can see how this works for a small tree. 
 
-We have two types of information we want to include in our graph; phylogenetic branch length and ecological associations. Figure \ref{FP_adjacency} only shows branch lengths. How do we get all of that into an adjacency matrix? Hold onto your hats, folks, because this is the one truly original idea in my Ph.D. All the nodes belong to either one tree or the other. So you just... stick them together. Yep. That's it. 
+We have two types of information we want to include in our graph; phylogenetic branch length and ecological associations. Figure \ref{FP_adjacency} only shows branch lengths. How do we get all of that into an adjacency matrix? Hold onto your hats, folks, because this is the one truly original idea from my Ph.D. Ready? OK. Here it goes.
 
-Graphs are very flexible objects. You can represent a tree as a graph. Graphs don't have to be fully connected. A bunch of nodes with no connections to one another is still a valid graph (the adjacency matrix would be all zeros). So, you can make adjacency matrixes for your trees, and paste them together along their diagonals. In the co-phylogeny, the leafs
+All the nodes belong to either one tree or the other. So you just... stick them together. Yep. That's it.
 
-I've shown in Figure \ref{fig:adjacency}.
-
+Graphs are absurdly flexible objects. They have the kind of omnivorous generality of a relational database, minus the need to actually {\em understand} your data. So, you can represent a tree as a graph, as we've already done. Or, you can represent two trees. Graphs don't have to be fully connected. A bunch of nodes with no connections to one another is a perfectly valid graph (the adjacency matrix would be all zeros). So, we just make adjacency matrixes for our two trees, and paste them together along their diagonals.
 
 \subfile{figures/adjacency}
+
+In the co-phylogeny, the leafs are connected by ecological data. For a host-parasite interaction, the leaf nodes are connected by the host range of the parasites. For a phylogenomics problem, the leaf nodes represent alleles that are linked by the genomes where they are found together. For microbiome data, the leaf nodes represent the sampled hosts and the OTUs that are linked by the read count table. To express those links, you just find the row and column that correspond to the two leafs, and you put the quantity in that element.
+
+Because the two trees are not connected by phylogenetic links, there are two empty blocks in the combined adjacency matrix above and below the diagonal. That is where the ecological links go. 
+
+There is one final consideration. Unless you are lucky enough to have time calibrated trees, the phylogenetic are probably in different scales. If they were built using the same methods, the might 
+
+
+
+Figure \ref{fig:adjacency}.
+
+
+
 
 %% box
 

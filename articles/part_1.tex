@@ -136,48 +136,93 @@ So, practically speaking, how does one go about building this representation? Th
 
 Our nodes represent leafs and junctions of phylogenetic trees, and our edges represent either phylogenetic distance between tree junctions or ecological connections between leafs. It's not obvious what ``direction'' would mean for that kind of object, and so we're not going to use a directed graph. Undirected graphs can be represented either by a symmetric adjacency matrix ($A_{i,j} \equiv A_{j,i}$), or by a triangular half-matrix. I hate looking at plots of triangular matrixes, so I'm always going to draw them with top and bottom triangles. This is redundant information that we might want to discard later for faster performance, but for now we'll use it to make the plots easier to understand.
 
-Adjacency matrixes can have connections from a node back to itself. These go along the diagonal ($A_{i,i}$). In a directed graph, it doesn't matter which direction a self-connected edge is oriented, so it makes sense that they don't have a corresponding double in the other triangle of the adjacency matrix. Or, they are their own double, if you prefer to think of it that way. For our purposes, self-connected nodes don't make any sense. We will disallow them by requiring that $A_{i,i} \equiv 0$.
+Adjacency matrixes can have connections from a node back to itself. These go along the diagonal ($A_{i,i}$). In a directed graph, it doesn't matter which direction a self-connected edge is oriented, so it makes sense that they don't have a doppelganger in the other triangle of the adjacency matrix. Or, they are their own doppelganger, if you prefer to think of it that way. For our purposes, self-connected nodes don't make any sense. We will disallow them by requiring that $A_{i,i} \equiv 0$.
 
 So far, we've only included information about {\em whether or not} two nodes are connected, and so edges are represented as either 0 or 1. Instead of representing a social network with a binary value (Alice is friends with Bob, but not with Mallory), we might represent it with a continuous quantity (Alice has sent Bob 14.3 gigabytes of cat videos). When we put those quantities into the adjacency matrix, the graph jargon for this is a {\em weighted} adjacency matrix. In Figure \ref{FP_adjacency}, you can see how this works for a small tree. 
 
-We have two types of information we want to include in our graph; phylogenetic branch length and ecological associations. Figure \ref{FP_adjacency} only shows branch lengths. How do we get all of that into an adjacency matrix? Hold onto your hats, folks, because this is the one truly original idea from my Ph.D. Ready? OK. Here it goes.
+We have two types of information we want to include in our graph; phylogenetic branch length and ecological associations. Figure \ref{FP_adjacency} only shows branch lengths for a single tree. How do we get all of that into an adjacency matrix? Hold onto your hats, folks, because this is the one truly original idea from my Ph.D. Ready? OK. Here it goes.
 
-All the nodes belong to either one tree or the other. So you just... stick them together. Yep. That's it.
+All the nodes belong to either one tree or the other. So you take the adjacency matrixes for the two trees and just... stick them together. Yep. That's it.
 
-Graphs are absurdly flexible objects. They have the kind of omnivorous generality of a relational database, minus the need to actually {\em understand} your data. So, you can represent a tree as a graph, as we've already done. Or, you can represent two trees. Graphs don't have to be fully connected. A bunch of nodes with no connections to one another is a perfectly valid graph (the adjacency matrix would be all zeros). So, we just make adjacency matrixes for our two trees, and paste them together along their diagonals.
+Graphs are absurdly flexible objects. They have the kind of omnivorous generality of a relational database, minus the need to actually {\em understand} your data. They are the perfect receptacle for mysterious, complicated stuff. So, you can represent a tree as a graph, as we've already done. Or, you can represent two trees. Graphs don't have to be fully connected, so we haven't broken any rules by pasting two graphs together. You just stick the adjacency matrixes together along their diagonals.
 
 \subfile{figures/adjacency}
 
-In the co-phylogeny, the leafs are connected by ecological data. For a host-parasite interaction, the leaf nodes are connected by the host range of the parasites. For a phylogenomics problem, the leaf nodes represent alleles that are linked by the genomes where they are found together. For microbiome data, the leaf nodes represent the sampled hosts and the OTUs that are linked by the read count table. To express those links, you just find the row and column that correspond to the two leafs, and you put the quantity in that element.
+In the co-phylogeny, the leafs are connected by ecological data. For a host-parasite interaction, the leaf nodes are connected by the host range of the parasites. For a phylogenomics problem, the leaf nodes represent alleles that are linked by the genomes where they are found together. For microbiome data, the leaf nodes represent the sampled hosts and observed OTUs that are linked by the read count table. To express those links, you just find the row and column that correspond to the two leafs, and you put the quantity in that element.
 
-Because the two trees are not connected by phylogenetic links, there are two empty blocks in the combined adjacency matrix above and below the diagonal. That is where the ecological links go. 
+Because the two trees are not connected by phylogenetic links, there are two empty blocks in the combined adjacency matrix above and below the diagonal. That is where the ecological links go. Because adjacency matrixes are all-by-all, the blocks representing each of the trees will be square, and so will the combined adjacency matrix. If the two trees aren't the same size, though, the blocks where the ecological links go will be rectangular. Figure \ref{fig:adjacency} illustrates what this looks like.
 
-There is one final consideration. Unless you are lucky enough to have time calibrated trees, the phylogenetic are probably in different scales. If they were built using the same methods, the might 
+There is one final consideration -- normalization. Unless you are lucky enough to have time calibrated trees, the branch lengths of the trees are probably in different scales. The ecological observations are a totally different category of information. So, what to do?
 
+As we'll see in following posts, we are building this graph so that we can compare it to other graphs representing co-phylogenies of other events. There are myriad reasons why events with similar ecological and evolutionary dynamics might happen over vastly different scales -- the generation time of the organisms involved, or the substitution rates of the marker genes used, or the population sizes... Suffice it to say that it makes the most sense to treat units of phylogenetic branch length in relative terms, and normalize the root-to-deepest-tip for all trees to 1.
 
-
-Figure \ref{fig:adjacency}.
-
-
-
-
-%% box
+To keep the ecological observations in scope, I have made the somewhat arbitrary choice to normalize them to be bounded by the longest and shortest branches found in the two trees. If they are presence-absence observations, then they receive edge weights equal to the average branch length found in the normalized trees. 
 
 In the next section, we will look at some relatively simple things we can do by representing co-phylogenies as graphs.
+
+\section{Co-phylogeny graphs with SuchTree}
+
+Without practical implementations, theory isn't much good to anyone but theorists. There are lots of excellent packages for working with phylogenetic trees. If you're not already using them, I would recommend {\tt ape}, {\tt phytools} and {\tt geiger} if R is your thing, or {\tt ete3}, {\tt dendropy} and {\tt scikit-bio} if you roll with python. However, these packages are really designed for working with trees that you might want to actually {\em look} at. As a figure in a manuscript, for example. They were not designed for trees with millions of taxa. Trees with millions of taxa are exactly what we get when we look at microbiomes.
+
+For this, I have done what Ph.D. students often do, which is to write their own software package. I've done my best not to re-invent the wheel {\em too} much -- there's no point in re-implementing what existing packages already do, and do very well. So, let me introduce you to {\tt SuchTree}, which I sincerely hope will remain a one-trick pony among phylogenetics packages.
+
+{\tt SuchTree} aims to do one thing very well -- speed. If you've read {\em Around the World in Eighty Days}, you might recall Phileas Fogg's crossing of the Atlantic aboard the steamship {\em Henrietta}. After running out of coal, Fogg buys the ship from the captain and has the crew burn every wooden part of the vessel :
+
+\begin{quote}
+It was necessary to have dry wood to keep the steam up to the adequate pressure, and on that day the poop, cabins, bunks, and the spare deck were sacrificed. On the next day, the 19th of December, the masts, rafts, and spars were burned; the crew worked lustily, keeping up the fires. Passepartout hewed, cut, and sawed away with all his might. There was a perfect rage for demolition.
+
+The railings, fittings, the greater part of the deck, and top sides disappeared on the 20th, and the {\em Henrietta} was now only a flat hulk. But on this day they sighted the Irish coast and Fastnet Light. By ten in the evening they were passing Queenstown. Phileas Fogg had only twenty-four hours more in which to get to London; that length of time was necessary to reach Liverpool, with all steam on. And the steam was about to give out altogether!
+\end{quote}
+
+This is basically how I designed {\tt SuchTree}. If you want to tweak, edit, re-root, visualize, or even save your trees, you'll have to use some other tool. If you want to do traversals, like finding patristic distances, or most recent common ancestors, or tip-to-root depth, {\tt SuchTree} does this with blazing speed. Everything else you might look for in a phylogenetics package went up the smokestack.
+
+This might seem like a rather trivial sort of thing to optimize, but it is the only way to work with tress that capture microbiome-scale diversity. Consider, for example, the task of calculating patristic distances. Normally, if we were going to do something like the Hommola test \cite{hommola2009permutation,}, we would build distance matrixes for each of the trees and then look up corresponding distances (this is how it is implemented in `scikit-bio`). Unfortunately, distance matrixes scale quadratically with the number of leafs in the tree. Fewer operations are required to look up the patristic distances in a matrix verses calculating it by traversing a tree, but as trees become very large, it becomes more important to contain the memory footprint than to have fewer operations.
+
+Trees with millions nodes have distance matrixes with trillions of elements. Even if you have a machine with enough RAM (terabytes of it!), your CPUs will spend most of their time waiting for data. Fortunately, trees scale linearly with the number of leafs. A bifurcating tree with $n$ leafs has a distance matrix of $n(n-1)$ elements, but the tree itself contains only $2n-1$ nodes. Trees with millions of nodes occupy mere megabytes of RAM. They can even fit into the on-chip cache of many modern CPUs, assuming you store them in a tidy data structure. {\tt SuchTree} represents bifurcating trees as a single, immutable, one-dimensional block of memory, and pre-orders the nodes by how they are most likely to be accessed. This is pretty much the dumbest data structure that can store a tree. It would earn a solid B- on an Introduction Computer Science 101 exam. However, this design gives the CPU's speculative memory management hardware the best chance at guessing which memory pages it needs to pre-fetch. That means the CPUs stay nice and busy.
+
+{\tt SuchTree} is implemented in {\tt Cython}, with the key components outside of Python's Global Interpreter Lock. Because the underlying data structure is immutable, tree-traversal operations on {\tt SuchTree} objects are fully thread-safe. This turns out to be quite important when you do lots statistics on Very Big Trees. 
+
+So, how fast is it?
+
+\subfile{figures/nj_vs_ml}
+
+One very simple practical question that can be explored using {\tt SuchTree} is to compare the structural dissimilarities among trees built using different phylogenetic inference methods. If I take two trees built from the same set of 54,327 OTUs using neighbor-joining and approximate maximum likelihood ({\tt using FastTree} \cite{price2010fasttree,}) I can randomly sample pairs of OTUs and calculate the patristic distances between them through the NJ tree and through the ML tree, and then examine how well these distances are correlated (Figure \ref{fig:nj_vs_ml}). For one million random pairs of OTUs, {\tt SuchTree} takes about 10 seconds to calculate the distances through the two trees. That's an average of about five microseconds per sample.
+
+In addition to {\tt SuchTree}, the package provides a helper class called {\tt SuchLinkedTrees} which handles a lot of the annoying bookkeeping that crops up when you are working with pairs of linked phylogenetic trees. {\tt SuchLinkedTrees} does following :
+
+\begin{itemize}
+\item It performs extensive input validation, and raises specific, meaningful error messages when the checks fail. Because linked trees are based on fairly complex pieces of data often are often assembled from different sources, useful error messages are a huge time-saver.
+\item It allows you to mask out pieces of one or both trees based on cladistic relationships. This makes it easy to examine statistical properties of embedded clades.
+\item It calculates linked patristic distances for clades with a relatively small number of taxa.
+\item It will sample linked patristic distances for clades with a large number of taxa.
+\item It calculates adjacency matrixes for any subsetted pair of clades.
+\item If the {\tt igraph} package is installed, it will directly generate {\tt Graph} objects.
+\end{itemize}
 
 \section{A first look at co-phylogeny graphs}
 %     part 2 : graph moments, spectral theory, first feature space
 
-Although they are feature-rich, comparing graphs to one another it is not straightforward. The most obvious question, {\em do these two graphs have the same topology?} is the dreaded graph isomorphism problem, and it is np-hard. The only way we know how to solve it is with computational bruit-force. Fortunately, finding exact topological congruence is not particularly useful to us. We want to look for motifs within the graph that correspond to relationship categories. Social cliques of humans that form by different processes tend to have different topologies in a social network; if we extract all the subgraphs that represent families, they will probably be structured somewhat differently than the subgraphs representing workplaces. Similarly, an endosymbiosis is likely to be structured differently than a comensalism in a microbiome co-phylogeny graph. To describe and detect these motifs, we need a way to find {\em similar} graphs.
+Although they are feature-rich, comparing graphs to one another it is not straightforward. One might start by asking the obvious, {\em do these two graphs have the same topology?} We thus face-plant into the famous graph isomorphism problem. It is NP-complete. The only way we know how to solve it is with computational bruit-force. Dang it.
+
+Fortunately, finding exact topological congruence is not particularly useful to us. We want to look for motifs within the graph that correspond to events that happen in nature. If we were a morally bankrupt tech company, we might be interested in identifying different processes by which humans form social cliques. This will allow us to help advertisers exploit those relationships to manipulate people so that they will buy awful things and vote for awful people.
+
+Cliques that form by different processes will tend to have different topologies. For example, if we extract all the subgraphs that represent families, they will probably be structured somewhat differently than the subgraphs representing workplaces. So, if we can find topological motifs in a curated collection of workplaces and families, we can use those motifs to find all the workplaces and families in the social network.
+
+We would like to do something similar, but hopefully with less techbro sociopathy. A microbiome co-phylogeny graph will also have cliques, and the topology of those cliques may have different motifs depending on the underlying process that created them. For example, an endosymbiosis is likely to be structured differently than a comensalism. To describe and detect these motifs, we need a way to find {\em similar} graphs.
 
 Broadly speaking, there are two ways to go about this. You can calculate moments of the graph, or you can build similarity or dissimilarity metrics on graphs. We'll look at dissimilarity metrics of graph spectra in Part 3 and dissimilarity metrics based om graph kernels in Part 5. 
 
-A moment is a value that represents some property of a graph. For example, what is the average number of connections per node? What is the standard deviation of the number of connections per node? What is the smallest number of connections that must be broken to divide the graph into two pieces? None of these can reveal a very clear picture of the g
+A moment is a value that represents some property of a graph. For example, what is the average number of connections per node? What is the standard deviation of the number of connections per node? What is the smallest number of connections that must be severed in order to divide the graph into two pieces? Individually, a moment only says one thing about a graph's topology, but with a collection of moments we can develop a general idea of how the graph is structured.
+
+
+\subfile{figures/graph_moments}
+
 
 In the next section, we will look at some more sophisticated moments on graph topology, and we'll start using them to cluster graphs.
 
 \section{Using spectral theory for moments and clustering}
 %     part 3 : spectral distance, null hypotheses, clustering
+
 
 If you take an infinitely long random walk from node to node within a graph, the frequency that each node will be visited relative to the others is called the {\em spectrum} of the graph, and is a powerful way to simplify the topology of the graph into one dimension (there is also a convenient shortcut to calculating the frequencies without actually performing the random walk). Graph spectra are not guaranteed to be unique; graphs with different topologies can have the same spectra, and are called {\em isospectral graphs}. Nevertheless, the bigger the graph, the less likely any pair of them will be isospectral. One can extract moments from the one-dimensional spectrum, such as its skewness, kurtosis 
 

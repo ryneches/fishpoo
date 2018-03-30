@@ -71,6 +71,9 @@ BCOR5mm, % Binding correction
 %     part 8 : a graph of many trees
 
 \section{Introduction}
+
+
+\section{Charisma bias, or why ecologists should parisitize big tech}
 %     part 1 : charisma bias, hijacking ML, co-phylogeny as graph
 
 Biology has a major problem with charisma. Humans relate to some organisms more easily than others. Fuzzy creatures get more attention than scaly or slimy ones. Creatures with faces get more attention than creatures without. Animals get more attention than plans. By abundance, diversity, biomass, age or metabolic wattage, eukaryotes make up a tiny fraction of life on Earth, but they occupy almost all of our attention. The same phenomenon happens in ecology.
@@ -214,8 +217,8 @@ Broadly speaking, there are two ways to go about this. You can calculate moments
 
 A moment is a value that represents some property of a graph. For example, what is the average number of connections per node? What is the standard deviation of the number of connections per node? What is the smallest number of connections that must be severed in order to divide the graph into two pieces? Individually, a moment only says one thing about a graph's topology, but with a collection of moments we can develop a general idea of how the graph is structured.
 
-
 \subfile{figures/graph_moments}
+
 
 
 In the next section, we will look at some more sophisticated moments on graph topology, and we'll start using them to cluster graphs.
@@ -225,6 +228,40 @@ In the next section, we will look at some more sophisticated moments on graph to
 
 
 If you take an infinitely long random walk from node to node within a graph, the frequency that each node will be visited relative to the others is called the {\em spectrum} of the graph, and is a powerful way to simplify the topology of the graph into one dimension (there is also a convenient shortcut to calculating the frequencies without actually performing the random walk). Graph spectra are not guaranteed to be unique; graphs with different topologies can have the same spectra, and are called {\em isospectral graphs}. Nevertheless, the bigger the graph, the less likely any pair of them will be isospectral. One can extract moments from the one-dimensional spectrum, such as its skewness, kurtosis 
+
+\begin{itemize}
+    \item{\textbf{Links} ($n_{L}$)} The number of links connecting the interacting trees.
+
+    \item{\textbf{Occupancy} ($k$)} The ratio of the number of links to the number of leafs ($2 n_{L} : n_{\rm hosts} + n_{\rm guests}$).
+
+    \item{\textbf{Squareness} ($q$)} : The ratio of the number of leafs in each tree.
+
+    \item{\textbf{Eigengap} ($\lambda_{\delta}$)} The difference between the largest and second largest eigenvalues in the Laplacian spectrum.
+    
+    \item{\textbf{Kurtosis} ($\gamma_{2}$)} The sharpness of the peak in the distribution (the fourth standardized moment).
+
+    \item{\textbf{Skew} ($\gamma_{1}$)} The asymmetry of the distribution (the third standardized moment).
+
+    \item{\textbf{Hommola correlation} ($r_{H}$)} The Hommola correlation of the interaction \cite{hommola2009permutation}.
+
+    \item{\textbf{Hommola significance} ($p_{H}$)} The significance of the Hommola correlation \cite{hommola2009permutation}.
+
+    \item{\textbf{Tree distance} ($D_{t}$)} The Jensen-Shannon divergence between the spectral density distributions of each of the two phylogenetic trees in the interactions.
+\end{itemize}
+
+\noindent These properties form an $n\times 9$ matrix of features, like so :
+
+\begin{equation}
+\psi =
+\bordermatrix{
+        & \lambda_{\delta}   & \gamma_{1}   & \gamma_{2}   & r_{H}   & p_{H}   & D_{t}   & k      & q      & n_{L}   \cr
+G_{L,0} & \lambda_{\delta,0} & \gamma_{1,0} & \gamma_{2,0} & r_{H,0} & p_{H,0} & D_{t,0} & k_{0}  & q_{0}  & n_{L,0} \cr
+G_{L,1} & \lambda_{\delta,1} & \gamma_{1,1} & \gamma_{2,1} & r_{H,1} & p_{H,1} & D_{t,1} & k_{1}  & q_{1}  & n_{L,1} \cr
+G_{L,2} & \lambda_{\delta,2} & \gamma_{1,2} & \gamma_{2,2} & r_{H,2} & p_{H,2} & D_{t,2} & k_{2}  & q_{2}  & n_{L,2} \cr
+\vdots  & \vdots             & \vdots       & \vdots       & \vdots  & \vdots  & \vdots  & \vdots & \vdots & \vdots  \cr 
+G_{L,n} & \lambda_{\delta,n} & \gamma_{1,n} & \gamma_{2,n} & r_{H,n} & p_{H,n} & D_{t,n} & k_{n}  & q_{n}  & n_{L,n} \cr
+}
+\end{equation}
 
 \section{Building a feature space}
 %     part 4 : building a feature space with training data & distances

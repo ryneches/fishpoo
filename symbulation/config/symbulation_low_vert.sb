@@ -1,0 +1,62 @@
+#!/bin/sh
+
+## This file runs one experimental condition (i.e. a group of jobs
+## that are the same except for their random seed)
+
+## Make sure to replace dolsonem with your HPCC username
+
+## Email settings
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=dolsonem@msu.edu
+
+## Job name settings
+#SBATCH --job-name=symbulation
+#SBATCH -o symbulation_%A_%a.out
+
+## Time requirement in hours and minutes. You might need to make this
+## longer, but try to keep it under 4 hours if possible
+#SBATCH --time=7-00:00:00
+
+## Memory requirement in megabytes. You might need to make this bigger.
+#SBATCH --mem-per-cpu=4gb                                                   
+
+## Launch an array of jobs. This is convenient for running replicates
+## that differ only by their random seed. One easy option is to use the array
+## index (given by ${SLURM_ARRAY_TASK_ID}) as the random seed, but if you
+## do make sure to use different ranges of numbers for each condition.
+## This specific command will launch 10 jobs, with array indices
+## 990, 991, 992, 993, 994, 995, 996, 997, 998, and 999.
+#SBATCH --array=985-989
+
+
+## We're running this on scratch because that's what ICER prefers
+## Remember to copy your results to your home directory once they're
+## done so that they don't get deleted
+cd /mnt/scratch/dolsonem/SymbulationEmp
+
+## Make a directory for this condition
+## (this line will throw an error once the directory exists, but
+## that's harmless)
+mkdir data
+cd data
+
+## Make a directory for this random seed
+mkdir ${SLURM_ARRAY_TASK_ID}
+cd ${SLURM_ARRAY_TASK_ID}
+
+## If your program needs any additional files present to run,
+## make sure to copy them to your current directory.
+## Often it's safest to copy the executable to the the current directory
+## but if you're confident that you're never going to change the
+## executable over the course of this project it's okay to have a single
+## copy of it that you always reference.
+## Really, though, what are the odds you're never going to change it?
+cp /mnt/scratch/dolsonem/SymbulationEmp/symbulation_default .
+cp /mnt/scratch/dolsonem/SymbulationEmp/SymSettings.cfg .
+#cp /mnt/scratch/dolsonem/my_executable_directory/my_config_file .
+
+## Actually run your program. Set the random seed to the array id
+## and make sure to set whatever other command-line arguments are necessary
+./symbulation_default -SEED ${SLURM_ARRAY_TASK_ID} -PHYLOGENY 1 -PHYLOGENY_TAXON_TYPE 1 -POP_SIZE 1 -HOST_INT .1 -SYM_INT .1 -UPDATES 1000000 -VERTICAL_TRANSMISSION .3 > run.log
+
+## If you need to do anything after your run, it can go here.
